@@ -30,4 +30,4 @@ class CommentModel(models.Model):
     text = models.TextField()
     author = models.ForeignKey(User, on_delete=models.Model)
     created_date = models.DateTimeField(auto_now=True)
-    product = models.ForeignKey(ProductModel, on_delete=models.Model, default=0)
+    product = models.ForeignKey(ProductModel, on_delete=models.Model, default=1)

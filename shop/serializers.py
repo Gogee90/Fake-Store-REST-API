@@ -11,13 +11,12 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
-  owner = serializers.ReadOnlyField(source='owner.username')
   category = serializers.ReadOnlyField(source='category.category')
   author = serializers.ReadOnlyField(source='author.username')
 
   class Meta:
     model = ProductModel
-    fields = ['id', 'title', 'description', 'price', 'author', 'author_id', 'category', 'created_date', 'owner', 'image', ]
+    fields = ['id', 'title', 'description', 'price', 'author', 'author_id', 'category', 'created_date', 'image', ]
 
   def create(self, validated_data):
     return ProductModel.objects.create(**validated_data)
