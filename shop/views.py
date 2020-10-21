@@ -1,10 +1,18 @@
-from .models import ProductModel, ProductCategory, CommentModel
-from .serializers import ProductSerializer, UserSerializer
+from .models import ProductModel, ProductCategory
+from .serializers import ProductSerializer, UserSerializer, CategorySerializer
 from rest_framework import generics
 from django.contrib.auth.models import User
 from rest_framework import permissions
 from .permissions import IsOwnerOrReadOnly
 
+
+class CategoryView(generics.ListAPIView):
+    queryset = ProductCategory.objects.all()
+    serializer_class = CategorySerializer
+
+class CategoryDetailView(generics.RetrieveAPIView):
+  queryset = ProductCategory.objects.all()
+  serializer_class = CategorySerializer
 
 class ProductView(generics.ListCreateAPIView):
   queryset = ProductModel.objects.all()
@@ -12,7 +20,7 @@ class ProductView(generics.ListCreateAPIView):
   permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
   def perform_create(self, serializer):
-    serializer.save(owner=self.request.user)
+    serializer.save(author=self.request.user)
 
 
 class ProductDetailView(generics.RetrieveUpdateDestroyAPIView):

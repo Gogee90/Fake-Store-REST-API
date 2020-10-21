@@ -15,7 +15,7 @@ class ProductCategory(models.Model):
 
 class ProductModel(models.Model):
     author = models.ForeignKey(User, related_name='products', on_delete=models.Model)
-    category = models.ForeignKey(ProductCategory, on_delete=models.Model)
+    category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE, null=True)
     description = models.TextField()
     image = models.ImageField(null=True, blank=True, upload_to='media')
     price = models.DecimalField(decimal_places=2, max_digits=10, default=0)

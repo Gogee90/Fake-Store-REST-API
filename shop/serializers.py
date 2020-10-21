@@ -7,16 +7,16 @@ class CategorySerializer(serializers.ModelSerializer):
 
   class Meta:
     model = ProductCategory
-    fields = ['category', 'description', 'image']
+    fields = ['id', 'category', 'description', 'image']
 
 
 class ProductSerializer(serializers.ModelSerializer):
-  category = serializers.ReadOnlyField(source='category.category')
+  category = ProductCategory()
   author = serializers.ReadOnlyField(source='author.username')
 
   class Meta:
     model = ProductModel
-    fields = ['id', 'title', 'description', 'price', 'author', 'author_id', 'category', 'created_date', 'image', ]
+    fields = ['id', 'title', 'description', 'price', 'author', 'category_id', 'category', 'created_date', 'image', ]
 
   def create(self, validated_data):
     return ProductModel.objects.create(**validated_data)
@@ -25,6 +25,7 @@ class ProductSerializer(serializers.ModelSerializer):
     instance.title = validated_data.get('title', instance.title)
     instance.description = validated_data.get('description', instance.description)
     instance.price = validated_data.get('price', instance.price)
+    instance.image = validated_data.get('image', instance.image)
     instance.save()
     return instance
 
