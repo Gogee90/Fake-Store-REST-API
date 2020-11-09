@@ -1,9 +1,18 @@
-from .models import ProductModel, ProductCategory
-from .serializers import ProductSerializer, UserSerializer, CategorySerializer
+from .models import ProductModel, ProductCategory, CommentModel
+from .serializers import (ProductSerializer, UserSerializer, CategorySerializer,
+CommentSerializer)
 from rest_framework import generics
 from django.contrib.auth.models import User
 from rest_framework import permissions
 from .permissions import IsOwnerOrReadOnly
+
+
+class CommentView(generics.ListAPIView):
+    serializer_class = CommentSerializer
+
+    def get_queryset(self):
+        product = self.kwargs['product']
+        return CommentModel.objects.filter(product=product)
 
 
 class CategoryView(generics.ListAPIView):

@@ -1,6 +1,14 @@
 from rest_framework import serializers
-from .models import ProductModel, ProductCategory
+from .models import ProductModel, ProductCategory, CommentModel
 from django.contrib.auth.models import User
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    author = serializers.ReadOnlyField(source='author.username')
+
+    class Meta:
+        model = CommentModel
+        fields = '__all__'
 
 
 class CategorySerializer(serializers.ModelSerializer):
