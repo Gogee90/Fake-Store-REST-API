@@ -8,7 +8,10 @@ class CommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CommentModel
-        fields = '__all__'
+        fields = ['author', 'author_id', 'text', 'created_date', 'product']
+
+    def create(self, validated_data):
+        return CommentModel.objects.create(**validated_data)
 
 
 class CategorySerializer(serializers.ModelSerializer):

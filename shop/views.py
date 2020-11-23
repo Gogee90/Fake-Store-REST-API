@@ -7,13 +7,15 @@ from rest_framework import permissions
 from .permissions import IsOwnerOrReadOnly
 
 
-class CommentView(generics.ListAPIView):
+class CommentView(generics.ListCreateAPIView):
     serializer_class = CommentSerializer
 
     def get_queryset(self):
         product = self.kwargs['product']
         return CommentModel.objects.filter(product=product)
 
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
 
 class CategoryView(generics.ListAPIView):
     queryset = ProductCategory.objects.all()
