@@ -31,3 +31,6 @@ class CommentModel(models.Model):
     author = models.ForeignKey(User, on_delete=models.Model)
     created_date = models.DateTimeField(auto_now=True)
     product = models.ForeignKey(ProductModel, on_delete=models.Model, default=1)
+
+    def __str__(self):
+        return self.text
