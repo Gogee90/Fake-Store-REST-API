@@ -13,6 +13,12 @@ class CartView(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 
+class CartDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Cart.objects.all()
+    serializer_class = CartSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+
 class CommentView(generics.ListCreateAPIView):
     serializer_class = CommentSerializer
 
