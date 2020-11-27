@@ -21,6 +21,7 @@ class ProductModel(models.Model):
     price = models.DecimalField(decimal_places=2, max_digits=10, default=0)
     title = models.CharField(max_length=100)
     created_date = models.DateTimeField(auto_now=True)
+    quantity = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
@@ -34,3 +35,9 @@ class CommentModel(models.Model):
 
     def __str__(self):
         return self.text
+
+
+class Cart(models.Model):
+    user = models.ForeignKey(User, related_name='users', on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now=True)
+    product_id = models.ManyToManyField(ProductModel)

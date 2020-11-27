@@ -1,6 +1,6 @@
 from django.urls import path, include
 from .views import (ProductView, ProductDetailView, UserList, UserDetail,
-CategoryView, CategoryDetailView, CommentView)
+CategoryView, CategoryDetailView, CommentView, CartView)
 
 app_name = "products"
 # app_name will help us do a reverse look-up latter.
@@ -12,5 +12,6 @@ urlpatterns = [
     path('comments/<int:product>', CommentView.as_view()),
     path('users/', UserList.as_view()),
     path('users/<int:pk>', UserDetail.as_view()),
+    path('carts/', CartView.as_view()),
     path('dj-rest-auth/', include('dj_rest_auth.urls'))
   ]
