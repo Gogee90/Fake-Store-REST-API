@@ -166,7 +166,7 @@ axios({
   method: 'delete',
   url: `https://gogee90.pythonanywhere.com/api/products/47`,
   headers: {
-    'Authorization': `Token ${localStorage['token']}`
+    'Authorization': `Token your_token`
   },
 }).then(response => {
   console.log(response)
