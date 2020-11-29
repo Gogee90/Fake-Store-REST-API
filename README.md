@@ -81,16 +81,33 @@ On windows:
 ```python manage.py makemigrations
 python manage.py migrate
 python manage.py createsuperuser your_username
-python manage.py runserver```
+To get things up and running:
+python manage.py runserver
+```
+Now get to the interesting part.
 
-
-<!-- USAGE EXAMPLES -->
-<!-- INSTALLATION -->
-## Build Setup
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-
-
+- To get all products
+```https://gogee90.pythonanywhere.com/api/products/```
+- To get a single product for example:
+```https://gogee90.pythonanywhere.com/api/products/47```
+- All product categories:
+```https://gogee90.pythonanywhere.com/api/category/```
+- A single product category:
+```https://gogee90.pythonanywhere.com/api/category/1```
+- Get comments to the corresponding products:
+```https://gogee90.pythonanywhere.com/api/comments/15```
+- Get a list of users and products added by them:
+```https://gogee90.pythonanywhere.com/api/users/```
+- Get a single user:
+```https://gogee90.pythonanywhere.com/api/users/2```
+- Get all carts added by user:
+```https://gogee90.pythonanywhere.com/api/carts/```
+- Get a single cart:
+```https://gogee90.pythonanywhere.com/api/carts/1```
+- In order to perform actions on the database you need to be authorized:
+```https://gogee90.pythonanywhere.com/api/'dj-rest-auth/login```
+To login you need to provide username and password, the response will return a token.
+Use that token to use methods PUT, DELETE and POST.
 
 <!-- LICENSE -->
 ## License
