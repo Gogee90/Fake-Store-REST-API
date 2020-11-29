@@ -115,7 +115,8 @@ Use that token to use methods PUT, DELETE and POST.
 
 The example of usage.
 - To perform a POST request:
-``` axios.post('/products/', formData, {
+``` 
+  axios.post('/products/', formData, {
         headers: {
           'Authorization': `Token your_token`,
         },
