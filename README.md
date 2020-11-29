@@ -114,6 +114,15 @@ You can store it in, for instance, in the localStorage.
 Use that token to use methods PUT, DELETE and POST.
 
 The example of usage.
+- To perform a simple GET request:
+```
+function saveProduct(context, id) {
+    axios.get(`https://gogee90.pythonanywhere.com/api/products/47`)
+      .then(response => {
+          console.log(response)
+      })
+}
+```
 - To perform a POST request:
 ``` 
 #To upload an image you need to use FormData();
@@ -125,9 +134,9 @@ The example of usage.
       formData.append('image', this.image)
       formData.append('price', this.price)
       formData.append('title', this.title)
-      axios.post('/products/', formData, {
+      axios.post('https://gogee90.pythonanywhere.com/api/products/', formData, {
         headers: {
-          'Authorization': `Token your_token`,
+          'Authorization': 'Token your_token',
         },
       }).then((response) => {
           console.log(response)
@@ -135,7 +144,42 @@ The example of usage.
           console.log(err)
       })
   }
-```                
+```
+- To perform a PUT request:
+```
+function updateProduct() {
+    let formData = new FormData()
+    formData.append('category', this.category)
+    formData.append('description', this.description)
+    formData.append('id', this.product_id)
+    formData.append('image', this.image)
+    formData.append('price', this.price)
+    formData.append('title', this.title)
+    axios.put(`https://gogee90.pythonanywhere.com/api/products/47`,formData, {
+      headers: {
+        'Authorization': 'Token your_token',
+      },
+     }).then((response) => {
+          console.log(response)
+      }).catch(err => {
+          console.log(err)
+      })
+}
+```
+- To perform a DELETE:
+```
+function deleteProduct() {
+    axios({
+      method: 'delete',
+      url: `https://gogee90.pythonanywhere.com/api/products/47`,
+      headers: {
+        'Authorization': `Token ${localStorage['token']}`
+      },
+    }).then(response => {
+      console.log(response)
+    })    
+}
+```            
 
 <!-- LICENSE -->
 ## License
