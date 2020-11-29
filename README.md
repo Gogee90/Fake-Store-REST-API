@@ -116,13 +116,25 @@ Use that token to use methods PUT, DELETE and POST.
 The example of usage.
 - To perform a POST request:
 ``` 
-  axios.post('/products/', formData, {
+#To upload an image you need to use FormData();
+  function addProduct() {
+      let formData = new FormData()
+      formData.append('category', this.selected)
+      formData.append('description', this.description)
+      formData.append('id', this.product_id)
+      formData.append('image', this.image)
+      formData.append('price', this.price)
+      formData.append('title', this.title)
+      axios.post('/products/', formData, {
         headers: {
           'Authorization': `Token your_token`,
         },
       }).then((response) => {
           console.log(response)
+      }).catch(err => {
+          console.log(err)
       })
+  }
 ```                
 
 <!-- LICENSE -->
