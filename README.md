@@ -1,4 +1,4 @@
-# Fake Store
+# Fake Store REST API
 [![Issues][issues-shield]][issues-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
