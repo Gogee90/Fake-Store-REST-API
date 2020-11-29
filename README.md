@@ -86,6 +86,9 @@ python manage.py runserver
 ```
 Now get to the interesting part.
 
+It's up to you what you're going to use to manipulate data.
+I used axios and i'm 100% sure you can use fetch if you feel more comfortable with it.
+
 - To get all products
 ```https://gogee90.pythonanywhere.com/api/products/```
 - To get a single product for example:
@@ -107,7 +110,19 @@ Now get to the interesting part.
 - In order to perform actions on the database you need to be authorized:
 ```https://gogee90.pythonanywhere.com/api/'dj-rest-auth/login```
 To login you need to provide username and password, the response will return a token.
+You can store it in, for instance, in the localStorage.
 Use that token to use methods PUT, DELETE and POST.
+
+The example of usage.
+- To perform a POST request:
+``` axios.post('/products/', formData, {
+        headers: {
+          'Authorization': `Token your_token`,
+        },
+      }).then((response) => {
+          console.log(response)
+      })
+```                
 
 <!-- LICENSE -->
 ## License
@@ -126,9 +141,9 @@ Project Link: [https://github.com/Gogee90/Fake-Store-REST-API/blob/master/README
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
-* [Vue.js](https://vuejs.org/)
-* [Vuetify](https://vuetifyjs.com/en/)
-* [Vue router](https://router.vuejs.org/)
+* [Django](https://www.djangoproject.com/)
+* [Django REST framework](https://www.django-rest-framework.org/)
+* [Dj-Rest-Auth](https://github.com/jazzband/dj-rest-auth)
 
 
 
