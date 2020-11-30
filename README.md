@@ -125,12 +125,12 @@ axios.get(`https://gogee90.pythonanywhere.com/api/products/47`)
 ``` 
 #To upload an image you need to use FormData();
 let formData = new FormData()
-formData.append('category', this.selected)
-formData.append('description', this.description)
-formData.append('id', this.product_id)
-formData.append('image', this.image)
-formData.append('price', this.price)
-formData.append('title', this.title)
+formData.append('category', category)
+formData.append('description', description)
+formData.append('id', product_id)
+formData.append('image', image)
+formData.append('price', price)
+formData.append('title', title)
 axios.post('https://gogee90.pythonanywhere.com/api/products/', formData, {
   headers: {
     'Authorization': 'Token your_token',
@@ -144,12 +144,12 @@ axios.post('https://gogee90.pythonanywhere.com/api/products/', formData, {
 - To perform a PUT request:
 ```
 let formData = new FormData()
-formData.append('category', this.category)
-formData.append('description', this.description)
-formData.append('id', this.product_id)
-formData.append('image', this.image)
-formData.append('price', this.price)
-formData.append('title', this.title)
+formData.append('category', category)
+formData.append('description', description)
+formData.append('id', product_id)
+formData.append('image', image)
+formData.append('price', price)
+formData.append('title', title)
 axios.put(`https://gogee90.pythonanywhere.com/api/products/47`,formData, {
   headers: {
     'Authorization': 'Token your_token',
