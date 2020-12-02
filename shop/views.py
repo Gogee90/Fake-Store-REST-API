@@ -7,15 +7,26 @@ from rest_framework import permissions
 from .permissions import IsOwnerOrReadOnly
 
 
-class CartView(generics.ListCreateAPIView):
+class EveryCartView(generics.ListCreateAPIView):
     queryset = Cart.objects.all()
     serializer_class = CartSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 
-class CartDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Cart.objects.all()
+class CartView(generics.ListCreateAPIView):
+    # queryset = Cart.objects.all()
     serializer_class = CartSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    lookup_field = 'user'
+
+    def get_queryset(self):
+        user_id = self.kwargs['pk']
+        return Cart.objects.filter(user=user_id)
+
+
+class CartDetailView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = CartSerializer
+    queryset = Cart.objects.all()
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 
