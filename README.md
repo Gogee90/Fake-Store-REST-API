@@ -103,9 +103,11 @@ I used axios and i'm 100% sure you can use fetch if you feel more comfortable wi
 ```https://gogee90.pythonanywhere.com/api/users/```
 - Get a single user:
 ```https://gogee90.pythonanywhere.com/api/users/2```
-- Get all carts added by user:
+- Get all carts:
 ```https://gogee90.pythonanywhere.com/api/carts/```
 - Get a single cart:
+```https://gogee90.pythonanywhere.com/api/carts/single/1```
+- Get all carts added by user:
 ```https://gogee90.pythonanywhere.com/api/carts/1```
 - In order to perform actions on the database you need to be authorized:
 ```https://gogee90.pythonanywhere.com/api/'dj-rest-auth/login```
