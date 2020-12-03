@@ -14,7 +14,7 @@ class ProductCategory(models.Model):
 
 
 class ProductModel(models.Model):
-    author = models.ForeignKey(User, related_name='products', on_delete=models.Model)
+    author = models.ForeignKey(User, related_name='products', on_delete=models.CASCADE)
     category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE, null=True)
     description = models.TextField()
     image = models.ImageField(null=True, blank=True, upload_to='media')
@@ -29,9 +29,9 @@ class ProductModel(models.Model):
 
 class CommentModel(models.Model):
     text = models.TextField()
-    author = models.ForeignKey(User, on_delete=models.Model)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now=True)
-    product = models.ForeignKey(ProductModel, on_delete=models.Model, default=1)
+    product = models.ForeignKey(ProductModel, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
         return self.text
