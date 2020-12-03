@@ -43,8 +43,8 @@ I needed to be able to create, update and remove records from database.
 ### Demo
 At the moment you can add new products, update and delete those but you need to be authorized.
 Just head to the login page.
-<strong>Login: test_user</strong>
-<strong>Password: test_user12345</strong>
+<strong>Login: testuser</strong>
+<strong>Password: fakestore</strong>
 You can use as you like but don't overstay your welcome :)
 [Demo](https://distracted-easley-826ab7.netlify.app/)
 
