@@ -1,20 +1,24 @@
 from .models import ProductModel, ProductCategory, CommentModel, Cart
 from .serializers import (ProductSerializer, UserSerializer, CategorySerializer,
-                          CommentSerializer, CartSerializer)
+                          CommentSerializer, CartSerializer, CartCreateSerializer)
 from rest_framework import generics
 from django.contrib.auth.models import User
 from rest_framework import permissions
 from .permissions import IsOwnerOrReadOnly
 
 
-class EveryCartView(generics.ListCreateAPIView):
+class CreateCartView(generics.ListCreateAPIView):
     queryset = Cart.objects.all()
-    serializer_class = CartSerializer
+    serializer_class = CartCreateSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 
+class EveryCartView(generics.ListAPIView):
+    queryset = Cart.objects.all()
+    serializer_class = CartSerializer
+
+
 class CartView(generics.ListCreateAPIView):
-    # queryset = Cart.objects.all()
     serializer_class = CartSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     lookup_field = 'user'
